@@ -1,0 +1,56 @@
+server:
+  port: 8090
+
+paypal:
+  client:
+    id: Adv6WbRq9WYR_03NM_gnv2yP1CaSmTktHn5d-RmfsX6sNgDp05Xx0bum3aLTqPavLz11brDMci3-kqY4
+    secret: EGDa-fBAG0h3xpjtv99UD3S4HdAaew4fPRvVpakUojdwPskljKitOt7YrydMZKr-NnBCH_Kqty81o0G1
+  mode: sandbox
+
+spring:
+  # jackson:
+  #   serialization:
+  #   fail-on-empty-beans: false
+  datasource:
+    url: jdbc:postgresql://localhost:5432/shop
+    username: postgres
+    password: pass123
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: false
+        transaction:
+          jta:
+            platform: org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  mail:
+    host: http://127.0.0.1:1080
+    port: 1025
+    username: hello
+    password: hello
+
+    properties:
+      mail:
+        smtp:
+          ssl:
+            trust: "*"
+          auth: true
+          starttls:
+            enable: true
+          # connectiontimeout: 5000
+          # timeout: 3000
+          # writetimeout: 5000
+
+application:
+  security:
+    jwt:
+      secret-key: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+      expiration: 8640000 # a day
+      refresh-token:
+        expiration: 604800000 # 7 days
